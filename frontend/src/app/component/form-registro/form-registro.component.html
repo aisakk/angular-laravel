@@ -1,0 +1,81 @@
+<div class="bg-gray-800 min-h-screen flex flex-col items-center  justify-center">
+    <form class="dark:bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg md:w-auto md:flex md:flex-wrap md:justify-between">
+      <!-- Primer Apellido -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white text-sm font-bold mb-2" for="primerApellido">Primer Apellido</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="primerApellido" type="text" placeholder="Primer Apellido" name="primerApellido" required>
+      </div>
+      <!-- Segundo Apellido -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="segundoApellido">Segundo Apellido</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="segundoApellido" type="text" placeholder="Segundo Apellido"  name="segundoApellido" required>
+      </div>
+      <!-- Primer Nombre -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="primerNombre">Primer Nombre</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="primerNombre" type="text" placeholder="Primer Nombre" name="primerNombre" required>
+      </div>
+      <!-- Otros Nombres -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="otrosNombres">Otros Nombres</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="otrosNombres" type="text" placeholder="Otros Nombres" name="otrosNombres">
+      </div>
+      <!-- País del empleo -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="paisEmpleo">País del empleo</label>
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="paisEmpleo"  name="paisEmpleo" required>
+          <option value="Colombia">Colombia</option>
+          <option value="Estados Unidos">Estados Unidos</option>
+        </select>
+      </div>
+      <!-- Tipo de Identificación -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="tipoIdentificacion">Tipo de Identificación</label>
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tipoIdentificacion"  name="tipoIdentificacion" required>
+          <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+          <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+          <option value="Pasaporte">Pasaporte</option>
+          <option value="Permiso Especial">Permiso Especial</option>
+        </select>
+      </div>
+      <!-- Número de Identificación -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="numeroIdentificacion">Número de Identificación</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="numeroIdentificacion" type="text" placeholder="Número de Identificación" name="numeroIdentificacion" required>
+      </div>
+      <!-- Correo electrónico -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="correoElectronico">Correo electrónico</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="correoElectronico" type="email" placeholder="Correo electrónico" name="correoElectronico" required>
+      </div>
+      <!-- Fecha de ingreso -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="fechaIngreso">Fecha de ingreso</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fechaIngreso" type="date" name="fechaIngreso" required>
+      </div>
+      <!-- Área -->
+      <div class="mb-4 w-full md:w-48">
+        <label class="block text-white  text-sm font-bold mb-2" for="area">Área</label>
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="area" name="area" required>
+          <option value="Administración">Administración</option>
+          <option value="Financiera">Financiera</option>
+          <option value="Compras">Compras</option>
+          <option value="Infraestructura">Infraestructura</option>
+          <option value="Operación">Operación</option>
+          <option value="Talento Humano">Talento Humano</option>
+          <option value="Servicios Varios">Servicios Varios</option>
+        </select>
+      </div>
+      <!-- Estado -->
+      <input type="hidden" name="estado" value="Activo">
+      <!-- Fecha y hora de registro -->
+      <input type="hidden" name="fechaRegistro" value="">
+      <!-- Botón de enviar -->
+      <div class="flex items-center justify-center w-full ">
+        <button class="bg-green-500 hover:bg-green-700 min-w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Registrar Empleado
+        </button>
+      </div>
+    </form>
+  </div>
+  
