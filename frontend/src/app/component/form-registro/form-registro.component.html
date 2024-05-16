@@ -1,111 +1,331 @@
-<div class="bg-gray-800 min-h-screen flex flex-col items-center  justify-center">
-    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="dark:bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg md:w-auto md:flex md:flex-wrap md:justify-between">
-      <!-- Primer Apellido -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white text-sm font-bold mb-2" for="primerApellido">Primer Apellido</label>
-        <input maxlength="20"  formControlName="primerApellido" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="primerApellido" type="text" placeholder="Primer Apellido" name="primerApellido" required>
-        <div *ngIf="registroForm.get('primerApellido')?.invalid && (registroForm.get('primerApellido')?.dirty || registroForm.get('primerApellido')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('primerApellido')?.errors?.['required']">El primer apellido es requerido.</div>
-          <div *ngIf="registroForm.get('primerApellido')?.errors?.['pattern']">El primer apellido debe contener solo letras mayúsculas.</div>
-          <div *ngIf="registroForm.get('primerApellido')?.errors?.['maxlength']">El primer apellido no puede tener más de 20 caracteres.</div>
-        </div>
-      </div>
-      <!-- Segundo Apellido -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="segundoApellido">Segundo Apellido</label>
-        <input maxlength="20"  formControlName="segundoApellido" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="segundoApellido" type="text" placeholder="Segundo Apellido"  name="segundoApellido" required>
-        <div *ngIf="registroForm.get('segundoApellido')?.invalid && (registroForm.get('segundoApellido')?.dirty || registroForm.get('segundoApellido')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('segundoApellido')?.errors?.['required']">El segundo apellido es requerido.</div>
-          <div *ngIf="registroForm.get('segundoApellido')?.errors?.['pattern']">El segundo apellido debe contener solo letras mayúsculas.</div>
-          <div *ngIf="registroForm.get('segundoApellido')?.errors?.['maxlength']">El segundo apellido no puede tener más de 20 caracteres.</div>
-        </div>
-      </div>
-      <!-- Primer Nombre -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="primerNombre">Primer Nombre</label>
-        <input maxlength="20" formControlName="primerNombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="primerNombre" type="text" placeholder="Primer Nombre" name="primerNombre" required>
-        <div *ngIf="registroForm.get('primerNombre')?.invalid && (registroForm.get('primerNombre')?.dirty || registroForm.get('primerNombre')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('primerNombre')?.errors?.['required']">El primer nombre es requerido.</div>
-          <div *ngIf="registroForm.get('primerNombre')?.errors?.['pattern']">El primer nombre debe contener solo letras mayúsculas.</div>
-          <div *ngIf="registroForm.get('primerNombre')?.errors?.['maxlength']">El primer nombre no puede tener más de 20 caracteres.</div>
-        </div>
-      </div>
-      <!-- Otros Nombres -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="otrosNombres">Otros Nombres</label>
-        <input maxlength="50" formControlName="otrosNombres" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="otrosNombres" type="text" placeholder="Otros Nombres" name="otrosNombres">
-        <div *ngIf="registroForm.get('otrosNombres')?.invalid && (registroForm.get('otrosNombres')?.dirty || registroForm.get('otrosNombres')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('otrosNombres')?.errors?.['required']">Otros Nombres es requerido.</div>
-          <div *ngIf="registroForm.get('otrosNombres')?.errors?.['pattern']">Otros Nombres debe contener solo letras mayúsculas.</div>
-          <div *ngIf="registroForm.get('otrosNombres')?.errors?.['maxlength']">Otros Nombres no puede tener más de 50 caracteres.</div>
-        </div>
-      </div>
-      <!-- País del empleo -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="paisEmpleo">País del empleo</label>
-        <select formControlName="paisEmpleo" class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" id="paisEmpleo"  name="paisEmpleo" required>
-          <option value="Colombia" selected>Colombia</option>
-          <option value="Estados Unidos">Estados Unidos</option>
-        </select>
-      </div>
-      <!-- Tipo de Identificación -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="tipoIdentificacion">Tipo de Identificación</label>
-        <select formControlName="tipoIdentificacion" class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" id="tipoIdentificacion"  name="tipoIdentificacion" required>
-          <option value="Cédula de Ciudadanía" selected>Cédula de Ciudadanía</option>
-          <option value="Cédula de Extranjería">Cédula de Extranjería</option>
-          <option value="Pasaporte">Pasaporte</option>
-          <option value="Permiso Especial">Permiso Especial</option>
-        </select>
-      </div>
-      <!-- Número de Identificación -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="numeroIdentificacion">Número de Identificación</label>
-        <input maxlength="20" formControlName="numeroIdentificacion" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="numeroIdentificacion" type="text" placeholder="Número de Identificación" name="numeroIdentificacion" required>
-        <div *ngIf="registroForm.get('numeroIdentificacion')?.invalid && (registroForm.get('numeroIdentificacion')?.dirty || registroForm.get('numeroIdentificacion')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('numeroIdentificacion')?.errors?.['required']">Numero Identificacion es requerido.</div>
-          <div *ngIf="registroForm.get('numeroIdentificacion')?.errors?.['pattern']">Numero de Identificacion solo debe ser numero</div>    
-        </div>
-      </div>
-      <!-- Correo electrónico -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="correoElectronico">Correo electrónico</label>
-        <input formControlName="correoElectronico" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="correoElectronico" type="email" placeholder="Correo electrónico" name="correoElectronico" [disabled]="true">
-      </div>
-      <!-- Fecha de ingreso -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="fechaIngreso">Fecha de ingreso</label>
-        <input formControlName="fechaIngreso" class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="fechaIngreso" type="date" name="fechaIngreso" required>
-        <div *ngIf="registroForm.get('fechaIngreso')?.invalid && (registroForm.get('fechaIngreso')?.dirty || registroForm.get('fechaIngreso')?.touched)" class="text-red-500 text-xs italic">
-          <div *ngIf="registroForm.get('fechaIngreso')?.errors?.['required']">Fecha de Ingreso es requerido.</div>
-          <div *ngIf="registroForm.get('fechaIngreso')?.errors?.['fechaInvalida']">La fecha de ingreso no debe ser superior a la actual minimo un mes menor al actual.</div>
-        </div>
-      </div>
-      <!-- Área -->
-      <div class="mb-4 w-full md:w-48">
-        <label class="block text-white  text-sm font-bold mb-2" for="area">Área</label>
-        <select formControlName="area" class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" id="area" name="area" required>
-          <option value="Administración" selected>Administración</option>
-          <option value="Financiera">Financiera</option>
-          <option value="Compras">Compras</option>
-          <option value="Infraestructura">Infraestructura</option>
-          <option value="Operación">Operación</option>
-          <option value="Talento Humano">Talento Humano</option>
-          <option value="Servicios Varios">Servicios Varios</option>
-        </select>
-      </div>
-      <!-- Estado -->
-      <input formControlName="estado" type="hidden" name="estado" value="Activo">
-      <!-- Fecha y hora de registro -->
-      <input formControlName="fechaRegistro" type="hidden" name="fechaRegistro" value="">
-      <!-- Botón de enviar -->
-      <div class="flex items-center justify-center w-full ">
-        <button [disabled]="!registroForm.valid" class="min-w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-  [ngClass]="{'bg-green-500 hover:bg-green-700 cursor-pointer': registroForm.valid, 'bg-gray-500 cursor-not-allowed': !registroForm.valid }"
-  type="submit">
-  Registrar Empleado
-</button>
-      </div>
-    </form>
+
+
+<div class="bg-gray-800 min-h-screen flex flex-col items-center justify-center">
+  <div *ngIf="mensajeAlerta" [ngClass]="alertaTipo === 'success' ? 'bg-green-100 border-green-500 text-green-700' : 'bg-red-100 border-red-500 text-red-700'" class="relative border-l-4 p-4 mb-4 w-80">
+    <p class="font-bold">{{ mensajeAlerta }}</p>
+    <button (click)="cerrarAlerta()" class="absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-900">
+      X
+    </button>
   </div>
-  
+  <form
+    [formGroup]="registroForm"
+    (ngSubmit)="onSubmit()"
+    class="dark:bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg md:w-auto md:flex md:flex-wrap md:justify-between"
+  >
+    <!-- Primer Apellido -->
+    <div class="mb-4 w-full md:w-48">
+      <label
+        class="block text-white text-sm font-bold mb-2"
+        for="primerApellido"
+        >Primer Apellido</label
+      >
+      <input
+        maxlength="20"
+        formControlName="primerApellido"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="primerApellido"
+        type="text"
+        placeholder="Primer Apellido"
+        name="primerApellido"
+        
+      />
+      <div
+        *ngIf="
+          registroForm.get('primerApellido')?.invalid &&
+          (registroForm.get('primerApellido')?.dirty ||
+            registroForm.get('primerApellido')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div *ngIf="registroForm.get('primerApellido')?.errors?.['']">
+          El primer apellido es requerido.
+        </div>
+        <div *ngIf="registroForm.get('primerApellido')?.errors?.['pattern']">
+          El primer apellido debe contener solo letras mayúsculas.
+        </div>
+        <div *ngIf="registroForm.get('primerApellido')?.errors?.['maxlength']">
+          El primer apellido no puede tener más de 20 caracteres.
+        </div>
+      </div>
+    </div>
+    <!-- Segundo Apellido -->
+    <div class="mb-4 w-full md:w-48">
+      <label
+        class="block text-white text-sm font-bold mb-2"
+        for="segundoApellido"
+        >Segundo Apellido</label
+      >
+      <input
+        maxlength="20"
+        formControlName="segundoApellido"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="segundoApellido"
+        type="text"
+        placeholder="Segundo Apellido"
+        name="segundoApellido"
+        
+      />
+      <div
+        *ngIf="
+          registroForm.get('segundoApellido')?.invalid &&
+          (registroForm.get('segundoApellido')?.dirty ||
+            registroForm.get('segundoApellido')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div *ngIf="registroForm.get('segundoApellido')?.errors?.['']">
+          El segundo apellido es requerido.
+        </div>
+        <div *ngIf="registroForm.get('segundoApellido')?.errors?.['pattern']">
+          El segundo apellido debe contener solo letras mayúsculas.
+        </div>
+        <div *ngIf="registroForm.get('segundoApellido')?.errors?.['maxlength']">
+          El segundo apellido no puede tener más de 20 caracteres.
+        </div>
+      </div>
+    </div>
+    <!-- Primer Nombre -->
+    <div class="mb-4 w-full md:w-48">
+      <label class="block text-white text-sm font-bold mb-2" for="primerNombre"
+        >Primer Nombre</label
+      >
+      <input
+        maxlength="20"
+        formControlName="primerNombre"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="primerNombre"
+        type="text"
+        placeholder="Primer Nombre"
+        name="primerNombre"
+        
+      />
+      <div
+        *ngIf="
+          registroForm.get('primerNombre')?.invalid &&
+          (registroForm.get('primerNombre')?.dirty ||
+            registroForm.get('primerNombre')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div *ngIf="registroForm.get('primerNombre')?.errors?.['']">
+          El primer nombre es requerido.
+        </div>
+        <div *ngIf="registroForm.get('primerNombre')?.errors?.['pattern']">
+          El primer nombre debe contener solo letras mayúsculas.
+        </div>
+        <div *ngIf="registroForm.get('primerNombre')?.errors?.['maxlength']">
+          El primer nombre no puede tener más de 20 caracteres.
+        </div>
+      </div>
+    </div>
+    <!-- Otros Nombres -->
+    <div class="mb-4 w-full md:w-48">
+      <label class="block text-white text-sm font-bold mb-2" for="otrosNombres"
+        >Otros Nombres</label
+      >
+      <input
+        maxlength="50"
+        formControlName="otrosNombres"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="otrosNombres"
+        type="text"
+        placeholder="Otros Nombres"
+        name="otrosNombres"
+      />
+      <div
+        *ngIf="
+          registroForm.get('otrosNombres')?.invalid &&
+          (registroForm.get('otrosNombres')?.dirty ||
+            registroForm.get('otrosNombres')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div *ngIf="registroForm.get('otrosNombres')?.errors?.['']">
+          Otros Nombres es requerido.
+        </div>
+        <div *ngIf="registroForm.get('otrosNombres')?.errors?.['pattern']">
+          Otros Nombres debe contener solo letras mayúsculas.
+        </div>
+        <div *ngIf="registroForm.get('otrosNombres')?.errors?.['maxlength']">
+          Otros Nombres no puede tener más de 50 caracteres.
+        </div>
+      </div>
+    </div>
+    <!-- País del empleo -->
+    <div class="mb-4 w-full md:w-48">
+      <label class="block text-white text-sm font-bold mb-2" for="paisEmpleo"
+        >País del empleo</label
+      >
+      <select
+        formControlName="paisEmpleo"
+        class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        id="paisEmpleo"
+        name="paisEmpleo"
+        
+      >
+        <option value="Colombia" selected>Colombia</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+      </select>
+    </div>
+    <!-- Tipo de Identificación -->
+    <div class="mb-4 w-full md:w-48">
+      <label
+        class="block text-white text-sm font-bold mb-2"
+        for="tipoIdentificacion"
+        >Tipo de Identificación</label
+      >
+      <select
+        formControlName="tipoIdentificacion"
+        class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        id="tipoIdentificacion"
+        name="tipoIdentificacion"
+        
+      >
+        <option value="Cédula de Ciudadanía" selected>
+          Cédula de Ciudadanía
+        </option>
+        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+        <option value="Pasaporte">Pasaporte</option>
+        <option value="Permiso Especial">Permiso Especial</option>
+      </select>
+    </div>
+    <!-- Número de Identificación -->
+    <div class="mb-4 w-full md:w-48">
+      <label
+        class="block text-white text-sm font-bold mb-2"
+        for="numeroIdentificacion"
+        >Número de Identificación</label
+      >
+      <input
+        maxlength="20"
+        formControlName="numeroIdentificacion"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="numeroIdentificacion"
+        type="text"
+        placeholder="Número de Identificación"
+        name="numeroIdentificacion"
+        
+      />
+      <div
+        *ngIf="
+          registroForm.get('numeroIdentificacion')?.invalid &&
+          (registroForm.get('numeroIdentificacion')?.dirty ||
+            registroForm.get('numeroIdentificacion')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div
+          *ngIf="registroForm.get('numeroIdentificacion')?.errors?.['']"
+        >
+          Numero Identificacion es requerido.
+        </div>
+        <div
+          *ngIf="registroForm.get('numeroIdentificacion')?.errors?.['pattern']"
+        >
+          Numero de Identificacion solo debe ser numero
+        </div>
+      </div>
+    </div>
+    <!-- Correo electrónico -->
+    <div class="mb-4 w-full md:w-48">
+      <label
+        class="block text-white text-sm font-bold mb-2"
+        for="correoElectronico"
+        >Correo electrónico</label
+      >
+      <input
+        formControlName="correoElectronico"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="correoElectronico"
+        type="email"
+        placeholder="Correo electrónico"
+        name="correoElectronico"
+        [disabled]="true"
+        readonly
+      />
+    </div>
+    <!-- Fecha de ingreso -->
+    <div class="mb-4 w-full md:w-48">
+      <label class="block text-white text-sm font-bold mb-2" for="fechaIngreso"
+        >Fecha de ingreso</label
+      >
+      <input
+        formControlName="fechaIngreso"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="fechaIngreso"
+        type="date"
+        name="fechaIngreso"
+        
+      />
+      <div
+        *ngIf="
+          registroForm.get('fechaIngreso')?.invalid &&
+          (registroForm.get('fechaIngreso')?.dirty ||
+            registroForm.get('fechaIngreso')?.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <div *ngIf="registroForm.get('fechaIngreso')?.errors?.['']">
+          Fecha de Ingreso es requerido.
+        </div>
+        <div
+          *ngIf="registroForm.get('fechaIngreso')?.errors?.['fechaInvalida']"
+        >
+          La fecha de ingreso no debe ser superior a la actual minimo un mes
+          menor al actual.
+        </div>
+      </div>
+    </div>
+    <!-- Área -->
+    <div class="mb-4 w-full md:w-48">
+      <label class="block text-white text-sm font-bold mb-2" for="area"
+        >Área</label
+      >
+      <select
+        formControlName="area"
+        class="rounded w-full py-2 px-3 inline-flex items-center text-gray-500 bg-white border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        id="area"
+        name="area"
+        
+      >
+        <option value="Administración" selected>Administración</option>
+        <option value="Financiera">Financiera</option>
+        <option value="Compras">Compras</option>
+        <option value="Infraestructura">Infraestructura</option>
+        <option value="Operación">Operación</option>
+        <option value="Talento Humano">Talento Humano</option>
+        <option value="Servicios Varios">Servicios Varios</option>
+      </select>
+    </div>
+    <!-- Estado -->
+    <input
+    class="shadow appearance-none border rounded w-full py-2 px-3 mt-2 mb-2 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      formControlName="estado"
+    
+      readonly
+      name="estado"
+    />
+    <!-- Fecha y hora de registro -->
+    <input
+    class="shadow appearance-none border rounded w-full py-2 px-3 mt-2 mb-2 text-sm text-gray-900 border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      formControlName="fechaRegistro"
+    
+      readonly
+      name="fechaRegistro"
+    />
+    <!-- Botón de enviar -->
+    <div class="flex items-center justify-center w-full">
+      <button
+        
+        class="min-w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        [ngClass]="{
+          'bg-green-500 hover:bg-green-700 cursor-pointer': registroForm.valid,
+          'bg-gray-500 cursor-not-allowed': !registroForm.valid
+        }"
+        type="submit"
+      >
+        Registrar Empleado
+      </button>
+    </div>
+  </form>
+</div>

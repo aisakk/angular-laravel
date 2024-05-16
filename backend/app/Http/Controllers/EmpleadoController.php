@@ -30,6 +30,22 @@ class EmpleadoController extends Controller
     public function store(StoreEmpleadoRequest $request)
     {
         //
+       $registro = Empleado::create([
+            'primer_apellido' => $request->primerApellido,
+            'segundo_apellido' =>$request->segundoApellido,
+            'primer_nombre'=> $request->primerNombre,
+            'otros_nombres'=> $request->otrosNombres,
+            'pais'=> $request->paisEmpleo,
+            'tipo_identificacion'=> $request->tipoIdentificacion,
+            'numero_identificacion'=> $request->numeroIdentificacion,
+            'correo_electronico'=> $request->correoElectronico,
+            'fecha_ingreso'=> $request->fechaIngreso,
+            'area'=> $request->area,
+            'estado'=> $request->estado,
+            'fecha_registro'=> $request->fechaRegistro
+        ]);
+        return response()->json($request->all(), 201);
+        ;
     }
 
     /**

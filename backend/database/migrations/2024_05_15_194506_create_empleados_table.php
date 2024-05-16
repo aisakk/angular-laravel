@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('fecha_ingreso');
             $table->string('area');
             $table->enum('estado', ['Activo']);
-            $table->timestamp('fecha_registro')->useCurrent();
+            $table->date('fecha_registro')->useCurrent();
             $table->timestamps();
         });
     }

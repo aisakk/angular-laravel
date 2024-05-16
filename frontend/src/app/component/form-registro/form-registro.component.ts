@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgIf, NgClass, NgStyle } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
+import { RegistroServiceService } from './registro-service.service';
 @Component({
   selector: 'app-form-registro',
   standalone: true,
@@ -12,7 +13,10 @@ import { NgIf, NgClass, NgStyle } from '@angular/common';
 export class FormRegistroComponent {
   registroForm: FormGroup;
   idAleatorio: Number = Math.floor(Math.random() * 1000);
-  constructor(private formBuilder: FormBuilder) {
+  mensajeAlerta: string | null = null;
+  alertaTipo: 'success' | 'error' | null = null;
+
+  constructor(private formBuilder: FormBuilder, private service: RegistroServiceService) {
     this.registroForm = this.formBuilder.group({
       primerApellido: ['', [Validators.required, Validators.pattern(/^[A-Z]+$/), Validators.maxLength(20)]],
       segundoApellido: ['', [Validators.required, Validators.pattern(/^[A-Z]+$/), Validators.maxLength(20)]],
@@ -25,7 +29,7 @@ export class FormRegistroComponent {
       fechaIngreso: ['', [Validators.required,  this.fechaIngresoValidator ]],
       area: ['Administración', Validators.required],
       estado: ['Activo'],
-      fechaRegistro: [{ value: new Date(), disabled: true }]
+      fechaRegistro: [new Date().toISOString().split('T')[0],{ value: new Date(), disabled: true }]
     });
   }
 
@@ -43,24 +47,39 @@ export class FormRegistroComponent {
 
 
   onSubmit() {
-    console.log(this.registroForm.valid);
-  /*   if (this.registroForm.valid) {
-      // Lógica para enviar el formulario
-      console.log(this.registroForm.value);
-    } else {
-      // Marcar todos los campos como tocados para mostrar los mensajes de error
-      this.markFormGroupTouched(this.registroForm);
-    } */
+  this.service.guardarRegistro(this.registroForm.value).subscribe({
+    next: data => {
+      this.mensajeAlerta = 'Registro guardado exitosamente';
+        this.alertaTipo = 'success';
+        console.log(data)
+    },
+    error: error => {
+      let mensajeError = 'Hubo un error al guardar el registro';
+      if (error.error && typeof error.error === 'object') {
+        mensajeError += `: ${error.error.message || JSON.stringify(error.error)}`;
+      } else {
+        mensajeError += `: ${error.message || error.statusText}`;
+      }
+      this.mensajeAlerta = mensajeError;
+      this.alertaTipo = 'error';
+      console.error('There was an error!', error);
+    }
+}); 
+  this.registroForm.patchValue({
+    primerApellido:'',
+    segundoApellido:'',
+    primerNombre:'',
+    otrosNombres:'',
+    numeroIdentificacion: '',
+    correoElectronico: '',
+    fechaIngreso:''
+  })
+  }
+  cerrarAlerta() {
+    this.mensajeAlerta = null;
+    this.alertaTipo = null;
   }
 
-  markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
-      }
-    });
-  }
   generarCorreoElectronico() {
     const primerNombre = this.registroForm.get('primerNombre')?.value;
     const primerApellido = this.registroForm.get('primerApellido')?.value;
