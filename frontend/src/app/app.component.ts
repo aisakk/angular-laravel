@@ -5,6 +5,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
   selector: 'app-root',
   standalone: true,
   imports: [
+    
     RouterOutlet,
     NavbarComponent
   ],
