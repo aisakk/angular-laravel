@@ -12,4 +12,20 @@ export interface RegistroFormData {
     estado: string;
     fechaRegistro: Date | string;
   }
+
+ export interface ConsultaRegistro {
+    primer_apellido: string;
+    segundo_apellido: string;
+    primer_nombre: string;
+    otros_nombres: string;
+    pais: string;
+    tipo_identificacion: string;
+    numero_identificacion: string;
+    correo_electronico: string;
+    fecha_ingreso: string;
+    area: string;
+    estado: string;
+    fecha_registro: string;
+  }
+  
   

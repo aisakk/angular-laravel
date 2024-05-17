@@ -69,7 +69,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                   <tr *ngIf="registros.length == 0" class="flex justify-center items-center w-full">
+                    <td class="w-4 p-4">
+                        <p class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-full">No hay registros en la base de datos</p>
+                    </td>
+                   </tr>
+                   <ng-container *ngIf="registros.length !== 0"> 
+                    <tr *ngFor="let datos of registros" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
                             <div class="flex items-center">
                                 <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -77,45 +83,47 @@
                             </div>
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                            {{ datos.primer_apellido }}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            {{ datos.segundo_apellido }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.primer_nombre }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.otros_nombres }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.pais }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.tipo_identificacion }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.numero_identificacion }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.correo_electronico }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.fecha_ingreso }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.area }}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{ datos.estado }}
                         </td>
                         <td class="px-6 py-4">
-                            $2999
+                            {{ datos.fecha_registro }}
                         </td>
                         <td class="px-6 py-4">
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                     </tr>
+                   </ng-container>
+                    
                 </tbody>
             </table>
         </div>

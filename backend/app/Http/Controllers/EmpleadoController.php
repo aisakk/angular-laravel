@@ -14,6 +14,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         //
+        $consulta = Empleado::all();
+        return response()->json($consulta, 200);
     }
 
     /**

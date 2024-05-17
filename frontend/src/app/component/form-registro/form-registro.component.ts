@@ -26,18 +26,18 @@ export class FormRegistroComponent {
       tipoIdentificacion: ['Cédula de Ciudadanía', Validators.required],
       numeroIdentificacion: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^[0-9]+$/)]],
       correoElectronico: [''],
-      fechaIngreso: ['', [Validators.required,  this.fechaIngresoValidator ]],
+      fechaIngreso: ['', [Validators.required, this.fechaIngresoValidator]],
       area: ['Administración', Validators.required],
       estado: ['Activo'],
-      fechaRegistro: [new Date().toISOString().split('T')[0],{ value: new Date(), disabled: true }]
+      fechaRegistro: [new Date().toISOString().split('T')[0], { value: new Date(), disabled: true }]
     });
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
     this.generarCorreoElectronico()
   }
 
-  fechaIngresoValidator(control:any) {
+  fechaIngresoValidator(control: any) {
     const fechaIngreso = new Date(control.value);
     const fechaActual = new Date();
     fechaActual.setMonth(fechaActual.getMonth() - 1); // Restar un mes a la fecha actual
@@ -47,33 +47,33 @@ export class FormRegistroComponent {
 
 
   onSubmit() {
-  this.service.guardarRegistro(this.registroForm.value).subscribe({
-    next: data => {
-      this.mensajeAlerta = 'Registro guardado exitosamente';
+    this.service.guardarRegistro(this.registroForm.value).subscribe({
+      next: data => {
+        this.mensajeAlerta = 'Registro guardado exitosamente';
         this.alertaTipo = 'success';
         console.log(data)
-    },
-    error: error => {
-      let mensajeError = 'Hubo un error al guardar el registro';
-      if (error.error && typeof error.error === 'object') {
-        mensajeError += `: ${error.error.message || JSON.stringify(error.error)}`;
-      } else {
-        mensajeError += `: ${error.message || error.statusText}`;
+      },
+      error: error => {
+        let mensajeError = 'Hubo un error al guardar el registro';
+        if (error.error && typeof error.error === 'object') {
+          mensajeError += `: ${error.error.message || JSON.stringify(error.error)}`;
+        } else {
+          mensajeError += `: ${error.message || error.statusText}`;
+        }
+        this.mensajeAlerta = mensajeError;
+        this.alertaTipo = 'error';
+        console.error('There was an error!', error);
       }
-      this.mensajeAlerta = mensajeError;
-      this.alertaTipo = 'error';
-      console.error('There was an error!', error);
-    }
-}); 
-  this.registroForm.patchValue({
-    primerApellido:'',
-    segundoApellido:'',
-    primerNombre:'',
-    otrosNombres:'',
-    numeroIdentificacion: '',
-    correoElectronico: '',
-    fechaIngreso:''
-  })
+    });
+    this.registroForm.patchValue({
+      primerApellido: '',
+      segundoApellido: '',
+      primerNombre: '',
+      otrosNombres: '',
+      numeroIdentificacion: '',
+      correoElectronico: '',
+      fechaIngreso: ''
+    })
   }
   cerrarAlerta() {
     this.mensajeAlerta = null;
@@ -85,8 +85,8 @@ export class FormRegistroComponent {
     const primerApellido = this.registroForm.get('primerApellido')?.value;
     const paisEmpleo = this.registroForm.get('paisEmpleo')?.value === 'Colombia' ? 'global.com.co' : 'global.com.us';
     // Lógica para generar el correo electrónico
-   
+
     const correoElectronico = `${primerNombre}.${primerApellido}.${this.idAleatorio}@${paisEmpleo}`;
     this.registroForm.get('correoElectronico')?.setValue(correoElectronico);
-  } 
+  }
 }

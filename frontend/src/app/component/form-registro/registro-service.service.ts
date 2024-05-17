@@ -27,4 +27,7 @@ export class RegistroServiceService {
   guardarRegistro(registro: RegistroFormData){
    return this.http.post<RegistroFormData>('http://localhost:8000/api/registro-academy', registro, this.httpOptions)
   }
+  consultarRegistro(){
+    return this.http.get<any>('http://localhost:8000/api/consulta-academy')
+  }
 }
