@@ -100,6 +100,7 @@ export class TablaComponent {
     this.servicio.consultarRegistro().subscribe({
       next: data=>{
         this.registros = data
+        this.registrosFiltrados = [...data];
       },
       error: error =>{
         let mensajeError = 'Hubo un error al consultar los registro';
@@ -114,7 +115,8 @@ export class TablaComponent {
       }
     })
   }
-  abrirModalEliminar() {
+  abrirModalEliminar(empleado:any) {
+    this.empleadoSeleccionado = empleado
     this.mostrarModalEliminar = true;
   }
 
