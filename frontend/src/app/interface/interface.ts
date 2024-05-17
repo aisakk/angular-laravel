@@ -14,6 +14,7 @@ export interface RegistroFormData {
   }
 
  export interface ConsultaRegistro {
+    id: number|string;
     primer_apellido: string;
     segundo_apellido: string;
     primer_nombre: string;

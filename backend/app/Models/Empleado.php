@@ -25,4 +25,6 @@ class Empleado extends Model
         'estado',
         'fecha_registro'
     ];
+
+    protected $hidden = ['created_at', 'update_at'];
 }

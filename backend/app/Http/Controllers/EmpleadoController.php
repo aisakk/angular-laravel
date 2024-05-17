@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmpleadoRequest;
 use App\Http\Requests\UpdateEmpleadoRequest;
 use App\Models\Empleado;
+use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
@@ -69,16 +70,44 @@ class EmpleadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmpleadoRequest $request, Empleado $empleado)
+    public function update(UpdateEmpleadoRequest $request, Empleado $empleado, $id)
     {
         //
+        $empleado = Empleado::find($id);
+        $empleado->primer_apellido = $request->primerApellido;
+        $empleado->segundo_apellido = $request->segundoApellido;
+        $empleado->primer_nombre =$request->primerNombre;
+        $empleado->otros_nombres = $request->otrosNombres;
+        $empleado->pais = $request->paisEmpleo;
+        $empleado->tipo_identificacion = $request->tipoIdentificacion;
+        $empleado->numero_identificacion = $request->numeroIdentificacion;
+        $empleado->correo_electronico = $request->correoElectronico;
+        $empleado->fecha_ingreso= $request->fechaIngreso;
+        $empleado->area = $request->area;
+        $empleado->estado = $request->estado;
+        $empleado->fecha_registro = $request->fechaRegistro;
+        $empleado->save();
+
+        $consulta = Empleado::all();
+        return response()->json([
+            "mensaje" => "Actualizacion exitosa",
+            "registros" => $consulta
+        ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Empleado $empleado)
+    public function destroy(Empleado $empleado, $id)
     {
         //
+        $eliminar = Empleado::find($id);
+        $eliminar->delete();
+        $registros = Empleado::all();
+        return response()->json([
+            "mensaje" => "Registro Eliminado",
+            "registros" => $registros
+        ], 200);
+        
     }
 }

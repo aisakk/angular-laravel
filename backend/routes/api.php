@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/registro-academy', [EmpleadoController::class, 'store']);
 Route::get('/consulta-academy', [EmpleadoController::class, 'index']);
-Route::put('/update-academy', [EmpleadoController::class, 'update']);
-Route::delete('/delete-academy', [EmpleadoController::class, 'destroy']);
+Route::put('/update-academy/{id}', [EmpleadoController::class, 'update']);
+Route::delete('/delete-academy/{id}', [EmpleadoController::class, 'destroy']);
