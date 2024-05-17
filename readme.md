@@ -7,6 +7,6 @@ Para instalar el proyecto de laravel ejecutar:
 
 Para instalar la base de datos, revisar el .env del backend de laravel:
     -cd backend
-    -configurar .env con sus respectivos datos para la base de datos
+    -configurar .env con sus respectivos datos para la base de datos les dejo el archivo .env.example
     - crear una base de datos en el gestor de base de datos para la instalacion
     - para generar datos automaticos random: "php artisan db:seed" o "php artisan migrate:fresh --seed", los factorys no tienen la validacion realizada solo el frontend
